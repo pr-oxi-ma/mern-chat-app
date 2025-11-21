@@ -1,5 +1,7 @@
-**This Repo is a Modified version of [This Repository](https://github.com/RishiBakshii/mern-chat-app)**
-**Original Repo: [Original Repository](https://github.com/RishiBakshii/mern-chat-app)**
+**This Repo is a Modified version of [This Repository](https://github.com/RishiBakshii/mern-chat-app)**,
+
+**Original Repo: [Original Repository](https://github.com/RishiBakshii/mern-chat-app)**,
+
 **CREDITS: [Original Author](https://github.com/RishiBakshii)**
 
 
