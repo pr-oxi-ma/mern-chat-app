@@ -1,0 +1,10 @@
+/backend/dist
+/frontend/dist
+node_modules
+package-lock.json
+.env
+.env.local
+.env.production
+.env.development
+mern-chat-app_ori.zip
+firebase-admin-cred.json
