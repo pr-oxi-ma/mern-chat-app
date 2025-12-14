@@ -1,0 +1,23 @@
+#. BACKEND. #
+#. BUILD COMMAND. #
+
+npm install && npm run prisma:push && npm run build
+
+#. START COMMAND. #
+
+npm run start
+
+
+#. FRONTEND. #
+#. BUILD COMMAND. #
+#. RUN THIS FOR THE 1st TIME. #
+
+npm i && npm run build && npm run db:push:prod && npm run migrate:prod
+
+#. AFTER RUNNING IT. CHANGE THE BUILD COMMAND TO THIS:  #
+
+npm install && npm run build
+
+#. START COMMAND. #
+
+npm run start

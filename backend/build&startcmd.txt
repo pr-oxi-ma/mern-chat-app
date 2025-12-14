@@ -1,0 +1,5 @@
+#BUILD COMMAND#
+npm install && npm run prisma:push && npm run build
+
+#START COMMAND#
+npm run start

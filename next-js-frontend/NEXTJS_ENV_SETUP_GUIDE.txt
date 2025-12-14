@@ -1,0 +1,120 @@
+Next.js Production Environment Setup Guide
+=================================================
+
+1. Overview
+------------
+This guide explains how to correctly configure and use each environment variable defined in your `.env.production` file for a Next.js project. These variables are critical for connecting frontend services like Firebase, APIs, and email securely.
+
+--------------------------------------------------
+
+2. File Setup
+--------------
+- Filename: `.env.production`
+- Location: Place it in the **root directory** of your Next.js project.
+- Never upload the actual `.env` file to GitHub (keep it in `.gitignore`).
+
+--------------------------------------------------
+
+3. Variables Explanation
+-------------------------
+
+### 🔹 TENOR GIF API KEY
+`NEXT_PUBLIC_TENOR_API_KEY`
+- Used for GIF search/display features.
+- Safe to expose (client-side key).
+
+### 🔹 FIREBASE CONFIGURATION (Frontend)
+These variables allow your frontend to communicate with Firebase services.
+
+```
+NEXT_PUBLIC_FIREBASE_API_KEY=your-production-firebase-api-key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-production-firebase-auth-domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-production-firebase-project-id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-production-firebase-storage-bucket
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-production-firebase-messaging-sender-id
+NEXT_PUBLIC_FIREBASE_APP_ID=your-production-firebase-app-id
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=your-production-firebase-measurement-id
+NEXT_PUBLIC_FIREBASE_VAPID_KEY=your-production-firebase-vapid-key
+```
+
+- All keys prefixed with `NEXT_PUBLIC_` are exposed to the client.
+- These connect to Firebase Auth, Storage, Cloud Messaging, and Analytics.
+
+### 🔹 API URLs
+```
+NEXT_PUBLIC_BASE_URL=https://your-production-api.com/api/v1
+NEXT_PUBLIC_ABSOLUTE_BASE_URL=https://your-production-api.com
+NEXT_PUBLIC_CLIENT_URL=https://your-production-client.com
+```
+- `NEXT_PUBLIC_BASE_URL`: Used by frontend API requests.
+- `NEXT_PUBLIC_ABSOLUTE_BASE_URL`: Base domain, no `/api` path.
+- `NEXT_PUBLIC_CLIENT_URL`: For redirections and email links.
+
+### 🔹 DATABASE CONNECTION
+`DATABASE_URL=your-production-database-url`
+- Used only on the server side (keep private).
+- Do NOT prefix with `NEXT_PUBLIC_`.
+- Example format: `postgresql://postgres.user:passwd@host.pooler.supabase.com:6543/postgres?pgbouncer=true`
+
+### 🔹 DIRECT CONNECTION
+`DIRECT_URL=your-database-direct-url`
+- Used only on the server side (keep private)
+- Do NOT prefix with `NEXT_PUBLIC_`.
+- Example format: `postgresql://postgres.user:passwd@host.pooler.supabase.com:5432/postgres?sslmode=require
+
+### 🔹 SESSION SECRET
+`SESSION_SECRET=your-production-session-secret`
+- Used to encrypt session cookies.
+- Keep private; don’t expose to frontend.
+- Keep it same with Backend JWT_SECRET
+
+### 📧 EMAIL CONFIGURATION
+```
+EMAIL=your-production-email@example.com
+PASSWORD=your-production-email-password
+```
+- Used by the backend for sending emails (e.g., OTPs, notifications).
+
+### 🔏 PRIVATE KEY RECOVERY SECRET
+`PRIVATE_KEY_RECOVERY_SECRET=your-production-secure-private-key-recovery-secret`
+- Used for secure private key restoration or encryption logic.
+- Keep it same with Backend
+
+--------------------------------------------------
+
+4. Deployment Notes
+--------------------
+✅ Always use `.env.production` in your live environment.  
+✅ Never include sensitive credentials in `NEXT_PUBLIC_` variables.  
+✅ Double-check variable names for typos — they are **case-sensitive**.  
+✅ Restart the Next.js server after making changes:  
+```
+npm run build && npm run start
+```
+
+--------------------------------------------------
+
+5. Recommended Folder Structure
+--------------------------------
+```
+project-root/
+│
+├── .env.production
+├── .gitignore
+├── package.json
+├── next.config.js
+└── src/
+    ├── app/
+    ├── lib/
+    ├── components/
+    └── pages/
+```
+
+--------------------------------------------------
+
+6. Security Tips
+-----------------
+- Never push `.env.production` to GitHub.
+- Use a `.env.example` file with placeholders for public sharing.
+- Rotate API keys regularly.
+- Limit Firebase and Tenor API keys to your production domain.

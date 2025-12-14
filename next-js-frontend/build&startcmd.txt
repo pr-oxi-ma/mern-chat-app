@@ -1,0 +1,10 @@
+#. BUILD COMMAND  #
+#. RUN THIS FOR 1ST TIME #
+npm i && npm run build && npm run db:push:prod && npm run migrate:prod
+
+#. THEN USE 👇  #
+npm i && npm run build
+
+
+#. START COMMAND #
+npm run start
