@@ -150,8 +150,8 @@ At [Mernchat](https://mernchat.in), i am committed to transparency and security.
 
 ### **1️⃣ Clone the Repository**  
 ```bash
-git clone https://github.com/RishiBakshii/nextjs-chat-app
-cd nextjs-chat-app
+git clone https://github.com/pr-oxi-ma/mern-chat-app.git
+cd mern-chat-app
 ```
 
 ### **2️⃣ Set Up Environment Variables**  
@@ -197,6 +197,7 @@ cd nextjs-chat-app
 ```bash
 cd backend
 npm install
+npm run generate
 npm run dev
 ```
 The backend will start at **http://localhost:8000**.  
